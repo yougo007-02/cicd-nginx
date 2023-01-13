@@ -35,4 +35,4 @@ metadata:
   name: prod
 description: UAT Environment
 gke:
-  cluster: projects/uat-cluster-371515/locations/us-west1/clusters/prod-cluster
+  cluster: projects/yougo-prod-369515/locations/us-west1/clusters/prod-cluster
