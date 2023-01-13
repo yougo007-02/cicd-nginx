@@ -1,0 +1,29 @@
+---
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: DeliveryPipeline
+metadata:
+  name: nginx-pipeline
+description: Nginx Deployment Pipeline 
+serialPipeline:
+  stages:
+  - targetId: dev
+  - targetId: uat
+  - targetId: prod
+
+---
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: Target
+metadata:
+  name: dev
+description: dev Environment
+gke:
+  cluster: projects/yougo-dev-369515/locations/us-west1/clusters/dev-cluster
+
+---
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: Target
+metadata:
+  name: uat
+description: UAT Environment
+gke:
+  cluster: projects/uat-cluster-371515/locations/us-central1/clusters/uat-cluster
