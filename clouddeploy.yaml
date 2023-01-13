@@ -33,6 +33,6 @@ apiVersion: deploy.cloud.google.com/v1beta1
 kind: Target
 metadata:
   name: prod
-description: UAT Environment
+description: prod Environment
 gke:
   cluster: projects/yougo-prod-369515/locations/us-west1/clusters/prod-cluster
