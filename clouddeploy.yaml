@@ -27,3 +27,12 @@ metadata:
 description: UAT Environment
 gke:
   cluster: projects/uat-cluster-371515/locations/us-central1/clusters/uat-cluster
+
+---
+apiVersion: deploy.cloud.google.com/v1beta1
+kind: Target
+metadata:
+  name: uat
+description: UAT Environment
+gke:
+  cluster: projects/uat-cluster-371515/locations/us-west1/clusters/prod-cluster
