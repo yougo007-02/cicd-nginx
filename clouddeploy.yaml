@@ -34,5 +34,6 @@ kind: Target
 metadata:
   name: prod
 description: prod Environment
+requireApproval: true
 gke:
   cluster: projects/yougo-prod-369515/locations/us-west1/clusters/prod-cluster
