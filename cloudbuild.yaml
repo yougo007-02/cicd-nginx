@@ -16,14 +16,15 @@
 # repository as source. Here we use the 'docker' image to build the image and
 # tag it with the name of the image.
 steps:
-- id: 'build nginx image'
+- id: 'build nginx
+  image'
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build', '-t', 'gcr.io/yougo-k8-hardway-256417/nginx:1.1.0', 'nginx/' ]
+  args: ['build', '-t', 'gcr.io/yougo-k8-hardway-256417/nginx:1.1.1', 'nginx/' ]
   
 # Push to GCR
 - name: 'gcr.io/cloud-builders/docker'
   id: 'Pushing nginx to GCR'
-  args: ['push', 'gcr.io/yougo-k8-hardway-256417/nginx:1.1.0']
+  args: ['push', 'gcr.io/yougo-k8-hardway-256417/nginx:1.1.1']
   
 - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
   id: 'Registering nginx pipeline'
@@ -40,4 +41,4 @@ steps:
     gcloud deploy releases create release-$BUILD_ID
     --delivery-pipeline=nginx-pipeline
     --region=us-central1
-    --images=userservice=gcr.io/yougo-k8-hardway-256417/nginx:1.1.0  
+    --images=userservice=gcr.io/yougo-k8-hardway-256417/nginx:1.1.1  
