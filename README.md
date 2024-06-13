@@ -3,7 +3,7 @@
 # Steps below are dependent on the successful completion of https://github.com/Yougo007/gke-cluster
 
 
-Step 1: Fork or clone git repo https://github.com/Yougo007/cicd-nginx.git
+Step 1: Fork or clone git repo https://github.com/Yougo007/cicd-nginx.git ..
 
 
 Step 2: Grant the N-computer@developer.gserviceaccount.com in dev, uat & prod permission to container registry in the delivery-pipeline project.
