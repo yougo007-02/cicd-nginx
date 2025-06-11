@@ -1,5 +1,52 @@
-apiVersion: skaffold/v2beta16
+# skaffold.yam
+apiVersion: skaffold/v4beta7 # Use a recent Skaffold version
 kind: Config
+metadata:
+  name: nginx-app
+
+build:
+  artifacts:
+    - image: gcr.io/yougo-k8-hardway-256417/nginx:1.1.2 # This is a placeholder name, Skaffold replaces it with the fully qualified built image name
+      context: . # Assumes Dockerfile is in the same directory as skaffold.yaml
+  # You can use Google Cloud Build or local Docker for building
+  googleCloudBuild:
+    projectId: yougo-k8-hardway-256417 # Replace with your Project ID
+    # Optional: specify a region for GCB if needed
+    # region: YOUR_GCB_REGION
+
+# Default deploy configuration (can be overridden by profiles)
 deploy:
-  kubectl:
-    manifests: ["app-manifest/nginx.yaml"]
+  googleCloudRun:
+    projectid: yougo-dev-369515 # Replace with your Project ID
+    # region will be determined by the Cloud Deploy Target's location
+    # service name will be specified in profiles
+    # image will be automatically picked up from the build artifact
+    # Example: allow unauthenticated for simplicity, adjust as needed
+    allowUnauthenticated: true
+    # You can add more Cloud Run specific configurations here:
+    # memory: "512Mi"
+    # cpu: "1"
+    # concurrency: 80
+    # env:
+    #  - name: "KEY"
+    #    value: "VALUE_FROM_SKAFFOLD_DEFAULT"
+
+profiles:
+  - name: uat
+    deploy:
+      googleCloudRun:
+        service: nginx-uat # Replace with your Staging Cloud Run service name
+        # You can override other settings for staging here
+        # env:
+        #  - name: "ENVIRONMENT"
+        #    value: "staging"
+
+  - name: prod
+    deploy:
+      googleCloudRun:
+        service: nginx-prod # Replace with your Production Cloud Run service name
+        # You can override other settings for prod here
+        # env:
+        #  - name: "ENVIRONMENT"
+        #    value: "production"
+        # minInstances: 1 # Example: ensure at least one instance for prod
