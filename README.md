@@ -6,7 +6,7 @@
 Step 1: Fork or clone git repo https://github.com/Yougo007/cicd-nginx.git ..
 
 
-Step 2: Grant the N-computer@developer.gserviceaccount.com in dev, uat & prod permission to container registry in the delivery-pipeline project.
+Step 2: Grant the N-computer@developer.gserviceaccount.com in dev, uat & prod permission to container registry in the delivery-pipeline project...
 
 
 Step 3: Grant the N-computer@developer.gserviceaccount.com from the delivery-pipeline project, Kubernetes Engine Developer role access in dev, uat & prod projects
